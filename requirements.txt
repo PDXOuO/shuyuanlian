@@ -1,0 +1,9 @@
+# 运行演示与基准所需
+flask>=3.0
+numpy>=1.26
+cryptography>=42.0
+matplotlib>=3.8
+reportlab>=4.0
+pypdf>=4.0
+# 可选：Solidity 合约编译校验（python contracts/compile_check.py）
+py-solc-x>=2.0

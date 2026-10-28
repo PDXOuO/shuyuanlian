@@ -1,0 +1,297 @@
+{
+  "generated_at": "2026-10-29 01:01:17",
+  "total": 32,
+  "passed": 32,
+  "failed": 0,
+  "pass_rate": 100.0,
+  "cases": [
+    {
+      "id": "ELEM-01",
+      "case": "登记原始元件（持有方签名）",
+      "expect": "SUCCESS",
+      "actual": "SUCCESS",
+      "status": "SUCCESS",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "ELEM-02",
+      "case": "重复元件 ID 登记",
+      "expect": "E_DUP",
+      "actual": "E_DUP",
+      "status": "REVERTED",
+      "pass": true,
+      "detail": "元件已存在"
+    },
+    {
+      "id": "ELEM-03",
+      "case": "父节点不存在",
+      "expect": "E_PARENT",
+      "actual": "E_PARENT",
+      "status": "REVERTED",
+      "pass": true,
+      "detail": "父元件不存在：EL-NOT-EXIST"
+    },
+    {
+      "id": "ELEM-04",
+      "case": "派生元件登记（血缘深度 1）",
+      "expect": "SUCCESS",
+      "actual": "SUCCESS",
+      "status": "SUCCESS",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "ELEM-05",
+      "case": "血缘深度与父节点正确落库",
+      "expect": "PASS",
+      "actual": "depth=1",
+      "status": "PASS",
+      "pass": true,
+      "detail": "depth=1, parents=1"
+    },
+    {
+      "id": "AUTH-01",
+      "case": "持有者签发授权",
+      "expect": "SUCCESS",
+      "actual": "SUCCESS",
+      "status": "SUCCESS",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "AUTH-02",
+      "case": "非持有者签发授权",
+      "expect": "E_OWNER",
+      "actual": "E_OWNER",
+      "status": "REVERTED",
+      "pass": true,
+      "detail": "只有元件持有者可签发授权"
+    },
+    {
+      "id": "AUTH-03",
+      "case": "向自身签发授权",
+      "expect": "E_SELF",
+      "actual": "E_SELF",
+      "status": "REVERTED",
+      "pass": true,
+      "detail": "不得向自身授权"
+    },
+    {
+      "id": "AUTH-04",
+      "case": "用途不在白名单内",
+      "expect": "E_PURPOSE_MISMATCH",
+      "actual": "E_PURPOSE_MISMATCH",
+      "status": "REVERTED",
+      "pass": true,
+      "detail": "声明用途「广告投放」不在授权白名单内"
+    },
+    {
+      "id": "AUTH-05",
+      "case": "合规调用（第 1 次）",
+      "expect": "SUCCESS",
+      "actual": "SUCCESS",
+      "status": "SUCCESS",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "AUTH-06",
+      "case": "非授权主体冒用凭证",
+      "expect": "E_CONSUMER",
+      "actual": "E_CONSUMER",
+      "status": "REVERTED",
+      "pass": true,
+      "detail": "仅授权使用方可调用"
+    },
+    {
+      "id": "AUTH-07",
+      "case": "超过有效期后调用",
+      "expect": "E_EXPIRED",
+      "actual": "E_EXPIRED",
+      "status": "REVERTED",
+      "pass": true,
+      "detail": "授权状态为 EXPIRED，拒绝访问"
+    },
+    {
+      "id": "AUTH-08",
+      "case": "授权撤销后调用",
+      "expect": "E_REVOKED",
+      "actual": "E_REVOKED",
+      "status": "REVERTED",
+      "pass": true,
+      "detail": "授权状态为 REVOKED，拒绝访问"
+    },
+    {
+      "id": "AUTH-09",
+      "case": "次数耗尽后继续调用",
+      "expect": "E_EXHAUSTED",
+      "actual": "E_EXHAUSTED",
+      "status": "REVERTED",
+      "pass": true,
+      "detail": "授权状态为 EXHAUSTED，拒绝访问"
+    },
+    {
+      "id": "SETTLE-01",
+      "case": "单次分账金额守恒",
+      "expect": "PASS",
+      "actual": "max_diff=0",
+      "status": "PASS",
+      "pass": true,
+      "detail": "结算 5 次"
+    },
+    {
+      "id": "SETTLE-02",
+      "case": "累计余额等于累计收入",
+      "expect": "PASS",
+      "actual": "50000000",
+      "status": "PASS",
+      "pass": true,
+      "detail": "余额合计 50000000 微元"
+    },
+    {
+      "id": "SETTLE-03",
+      "case": "绕过授权合约直接结算",
+      "expect": "E_AUTH",
+      "actual": "E_AUTH",
+      "status": "REVERTED",
+      "pass": true,
+      "detail": "仅授权合约或治理方可触发结算"
+    },
+    {
+      "id": "TRACE-01",
+      "case": "未登记指纹即上报泄漏",
+      "expect": "E_NO_FP",
+      "actual": "E_NO_FP",
+      "status": "REVERTED",
+      "pass": true,
+      "detail": "该元件未登记指纹，无法溯源"
+    },
+    {
+      "id": "TRACE-02",
+      "case": "持有者登记指纹",
+      "expect": "SUCCESS",
+      "actual": "SUCCESS",
+      "status": "SUCCESS",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "TRACE-03",
+      "case": "相似度低于门限上报",
+      "expect": "E_LOW_CONF",
+      "actual": "E_LOW_CONF",
+      "status": "REVERTED",
+      "pass": true,
+      "detail": "相似度 60.0% 低于判定门限 85.0%"
+    },
+    {
+      "id": "TRACE-04",
+      "case": "非溯源机构上报",
+      "expect": "E_ROLE",
+      "actual": "E_ROLE",
+      "status": "REVERTED",
+      "pass": true,
+      "detail": "地址 0x438677f7… 缺少角色 ROLE_ORACLE"
+    },
+    {
+      "id": "TRACE-05",
+      "case": "命中上报并立案",
+      "expect": "SUCCESS",
+      "actual": "SUCCESS",
+      "status": "SUCCESS",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "TRACE-06",
+      "case": "元件冻结后新增授权",
+      "expect": "E_FROZEN",
+      "actual": "E_FROZEN",
+      "status": "REVERTED",
+      "pass": true,
+      "detail": "元件处于冻结状态，禁止新增授权"
+    },
+    {
+      "id": "TRACE-07",
+      "case": "重复立案（同一元件二次上报）",
+      "expect": "E_DUP_CASE",
+      "actual": "E_DUP_CASE",
+      "status": "REVERTED",
+      "pass": true,
+      "detail": "该元件已有在办案件"
+    },
+    {
+      "id": "PRIV-01",
+      "case": "密文求和结果与明文一致",
+      "expect": "PASS",
+      "actual": "23894212",
+      "status": "PASS",
+      "pass": true,
+      "detail": "求和解密 23894212，明文 23894212"
+    },
+    {
+      "id": "PRIV-02",
+      "case": "锚定聚合轮次",
+      "expect": "SUCCESS",
+      "actual": "SUCCESS",
+      "status": "SUCCESS",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "PRIV-03",
+      "case": "重复锚定同一轮次",
+      "expect": "E_DUP",
+      "actual": "E_DUP",
+      "status": "REVERTED",
+      "pass": true,
+      "detail": "该轮次已锚定"
+    },
+    {
+      "id": "CHAIN-01",
+      "case": "篡改区块内交易金额",
+      "expect": "PASS",
+      "actual": "detected",
+      "status": "PASS",
+      "pass": true,
+      "detail": "交易内容被篡改：3d5e0fc7ae84…"
+    },
+    {
+      "id": "CHAIN-02",
+      "case": "伪造区块签名数量不足",
+      "expect": "PASS",
+      "actual": "detected",
+      "status": "PASS",
+      "pass": true,
+      "detail": "签名数 2 低于门限 3"
+    },
+    {
+      "id": "CHAIN-03",
+      "case": "全链重放状态根一致",
+      "expect": "PASS",
+      "actual": "33 块",
+      "status": "PASS",
+      "pass": true,
+      "detail": "39 笔交易重放"
+    },
+    {
+      "id": "CHAIN-04",
+      "case": "只读查询不改变状态根",
+      "expect": "PASS",
+      "actual": "root 未变",
+      "status": "PASS",
+      "pass": true,
+      "detail": "存储层隔离有效，未污染"
+    },
+    {
+      "id": "FP-01",
+      "case": "抽样 40% + 加噪后仍可溯源",
+      "expect": "PASS",
+      "actual": "similarity=100.0%",
+      "status": "PASS",
+      "pass": true,
+      "detail": "命中 32/32 bit"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+[project]
+name = "shuyuanlian"
+version = "1.0.0"
+description = "数元链：公共数据授权运营的数据元件确权、计量与自动分账系统"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "flask>=3.0",
+    "numpy>=1.26",
+    "cryptography>=42.0",
+]
+
+[project.optional-dependencies]
+report = ["matplotlib>=3.8", "reportlab>=4.0", "pypdf>=4.0"]
+contracts = ["py-solc-x>=2.0"]
+
+[project.scripts]
+shuyuanlian = "main:main"

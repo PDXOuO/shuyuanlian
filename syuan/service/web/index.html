@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>数元链 · 数据元件确权、计量与自动分账</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='8'%20fill='%231565d6'/%3E%3Cg%20fill='white'%3E%3Crect%20x='9'%20y='9'%20width='14'%20height='3.6'%20rx='1.8'/%3E%3Crect%20x='9'%20y='14.6'%20width='10'%20height='3.6'%20rx='1.8'/%3E%3Crect%20x='9'%20y='20.2'%20width='6'%20height='3.6'%20rx='1.8'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header>
+  <div class="head-inner">
+    <div class="brand">
+      <div class="brand-mark">元</div>
+      <div>
+        <h1>数元链</h1>
+        <p>公共数据授权运营 · 元件确权 / 计量 / 自动分账 / 溯源</p>
+      </div>
+    </div>
+    <div class="metrics">
+      <div class="metric"><span>区块高度</span><strong id="m-height">0</strong></div>
+      <div class="metric"><span>累计交易</span><strong id="m-txs">0</strong></div>
+      <div class="metric"><span>平均出块间隔</span><strong id="m-tps">—</strong></div>
+      <div class="metric"><span>验证节点</span><strong id="m-nodes">4 / 4</strong></div>
+      <div class="metric ok" id="m-int"><span>账本完整性</span><strong>校验中</strong></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- ============================================================ 左栏 -->
+  <aside class="col-left">
+    <section class="card">
+      <div class="card-head"><h2>演示流程</h2><span class="hint">点任意一幕</span></div>
+      <div class="card-body">
+        <div class="acts" id="acts"></div>
+        <button class="run-all" id="run-all">一键跑完六幕</button>
+        <button class="ghost" id="reset">重置链与数据</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-head"><h2>联盟成员</h2><span class="hint" id="pcount">—</span></div>
+      <div class="card-body" id="members"><div class="empty">加载中…</div></div>
+    </section>
+  </aside>
+
+  <!-- ============================================================ 中栏 -->
+  <section class="col-main">
+    <section class="card">
+      <div class="card-head">
+        <h2>数据元件与血缘 DAG</h2>
+        <span class="hint">节点=链上确权元件　边=派生关系（权重）</span>
+      </div>
+      <div class="card-body dag-wrap" id="dag"><div class="empty">尚未登记元件</div></div>
+    </section>
+
+    <section class="card">
+      <div class="card-head"><h2>授权策略（链上状态机）</h2><span class="hint">ACTIVE / EXHAUSTED / EXPIRED / REVOKED / FROZEN</span></div>
+      <div class="card-body" id="policies"><div class="empty">尚无授权</div></div>
+    </section>
+
+    <section class="card">
+      <div class="card-head"><h2>链上事件流</h2><span class="hint">合约 Event，可被索引器订阅</span></div>
+      <div class="card-body"><div class="events" id="events"><div class="empty">等待交易…</div></div></div>
+    </section>
+
+    <section class="card">
+      <div class="card-head"><h2>执行日志</h2><span class="hint">本次演示的业务叙事</span></div>
+      <div class="card-body" id="logs"><div class="empty">尚未开始</div></div>
+    </section>
+  </section>
+
+  <!-- ============================================================ 右栏 -->
+  <aside class="col-right">
+    <section class="card">
+      <div class="card-head"><h2>分账余额</h2><span class="hint" id="settle-hint">—</span></div>
+      <div class="card-body" id="balances"><div class="empty">尚无结算</div></div>
+    </section>
+
+    <section class="card">
+      <div class="card-head"><h2>隐私计算</h2><span class="hint">Paillier + 差分隐私</span></div>
+      <div class="card-body" id="privacy"><div class="empty">运行第六幕后显示</div></div>
+    </section>
+
+    <section class="card">
+      <div class="card-head"><h2>指纹取证</h2><span class="hint">泄漏溯源</span></div>
+      <div class="card-body" id="forensics"><div class="empty">运行第四幕后显示</div></div>
+    </section>
+
+    <section class="card">
+      <div class="card-head"><h2>区块浏览器</h2><span class="hint">最近区块</span></div>
+      <div class="card-body" id="blocks"><div class="empty">尚无区块</div></div>
+    </section>
+  </aside>
+</main>
+
+<footer>
+  数元链 v1.0 · 本演示全部使用合成数据集，不含任何真实公共数据或个人数据；机构名称均为脱敏表述。<br>
+  链层为 4 节点门限签名联盟链（3/4 容错），提供与 Solidity 版本同构的合约接口，可切换至 FISCO BCOS 部署。
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="/static/app.js"></script>
+</body>
+</html>

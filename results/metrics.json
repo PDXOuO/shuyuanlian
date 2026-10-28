@@ -1,0 +1,387 @@
+{
+  "meta": {
+    "generated_at": "2026-10-29 00:59:38",
+    "python": "3.13.14",
+    "platform": "Windows 11",
+    "cpu": "Intel64 Family 6 Model 186 Stepping 2, GenuineIntel",
+    "validator_nodes": 4,
+    "quorum": 3,
+    "fp_bits": 32,
+    "fp_quantum": 0.01
+  },
+  "e2e": {
+    "setup_ms": 181.2,
+    "six_acts_s": 0.14,
+    "blocks": 7,
+    "txs": 28,
+    "integrity": {
+      "ok": true,
+      "blocks": 7,
+      "txs": 28
+    },
+    "balances": [
+      {
+        "address": "0xf661380f7707f7a17e9d92a2b86800a751bcb652",
+        "name": "某工业园区运营方",
+        "balance_micro": 51900000
+      },
+      {
+        "address": "0xa614a4efc53e9f8c063844b374cce9a8f5fb17c6",
+        "name": "某数据加工服务商",
+        "balance_micro": 36000000
+      },
+      {
+        "address": "0xbb101cf6f1d07d28986601b004c1e95b0c02a097",
+        "name": "某市统计部门",
+        "balance_micro": 9600000
+      }
+    ],
+    "settlement": {
+      "settlements": 6,
+      "volume_micro": 97500000
+    },
+    "detection": 10000,
+    "cases": 1,
+    "privacy": {
+      "total_kwh": 39659463.87,
+      "true_mean": 1101651.7741666667,
+      "noisy_mean": 1101999.299583373,
+      "epsilon": 1.0,
+      "key_bits": 1024
+    }
+  },
+  "throughput": {
+    "txs": 1000,
+    "batch_size": 200,
+    "elapsed_s": 1.126,
+    "tps": 888.0,
+    "latency_ms": {
+      "mean": 0.596,
+      "p50": 0.537,
+      "p95": 0.885,
+      "p99": 1.135,
+      "max": 3.249
+    },
+    "read_qps": 226659.7,
+    "sign_ms_per_tx": 0.449,
+    "blocks": 10,
+    "avg_block_ms": 125.9,
+    "gas_per_tx": 84842,
+    "state_bytes": 259166
+  },
+  "settlement": {
+    "calls": 1000,
+    "settled_events": 1000,
+    "max_abs_diff_micro": 0,
+    "nonzero_diff_count": 0,
+    "total_revenue_micro": 20000000000,
+    "total_balance_micro": 20000000000,
+    "conservation_error_micro": 0,
+    "conservation_error_ratio": 0.0,
+    "max_hop": 2,
+    "parties_paid": 3,
+    "balances": [
+      {
+        "address": "0xbb101cf6f1d07d28986601b004c1e95b0c02a097",
+        "name": "某市统计部门",
+        "balance_micro": 12000000000
+      },
+      {
+        "address": "0xa614a4efc53e9f8c063844b374cce9a8f5fb17c6",
+        "name": "某数据加工服务商",
+        "balance_micro": 4800000000
+      },
+      {
+        "address": "0xf661380f7707f7a17e9d92a2b86800a751bcb652",
+        "name": "某工业园区运营方",
+        "balance_micro": 3200000000
+      }
+    ],
+    "settle_stats": {
+      "settlements": 1000,
+      "volume_micro": 20000000000
+    }
+  },
+  "policy": {
+    "cases": [
+      {
+        "case": "合规调用（额度充足）",
+        "expected": "SUCCESS",
+        "hit": 20,
+        "trials": 20,
+        "rate": 100.0,
+        "codes": [
+          "SUCCESS"
+        ]
+      },
+      {
+        "case": "用途越权（非白名单目的）",
+        "expected": "E_PURPOSE_MISMATCH",
+        "hit": 20,
+        "trials": 20,
+        "rate": 100.0,
+        "codes": [
+          "E_PURPOSE_MISMATCH"
+        ]
+      },
+      {
+        "case": "次数耗尽后继续调用",
+        "expected": "E_EXHAUSTED",
+        "hit": 20,
+        "trials": 20,
+        "rate": 100.0,
+        "codes": [
+          "E_EXHAUSTED"
+        ]
+      },
+      {
+        "case": "非授权主体冒用他人凭证",
+        "expected": "E_CONSUMER",
+        "hit": 20,
+        "trials": 20,
+        "rate": 100.0,
+        "codes": [
+          "E_CONSUMER"
+        ]
+      },
+      {
+        "case": "非持有者伪造授权",
+        "expected": "E_OWNER",
+        "hit": 20,
+        "trials": 20,
+        "rate": 100.0,
+        "codes": [
+          "E_OWNER"
+        ]
+      },
+      {
+        "case": "绕过授权合约直接结算",
+        "expected": "E_AUTH",
+        "hit": 20,
+        "trials": 20,
+        "rate": 100.0,
+        "codes": [
+          "E_AUTH"
+        ]
+      },
+      {
+        "case": "授权撤销后继续调用",
+        "expected": "E_REVOKED",
+        "hit": 20,
+        "trials": 20,
+        "rate": 100.0,
+        "codes": [
+          "E_REVOKED"
+        ]
+      }
+    ],
+    "interception_rate": 100.0,
+    "violations_tested": 140
+  },
+  "fingerprint": {
+    "bits": 32,
+    "quantum": 0.01,
+    "rows": 432,
+    "carriers": 3,
+    "votes_per_bit": 54.0,
+    "per_transform": [
+      {
+        "transform": "截断",
+        "trials": 30,
+        "mean_similarity": 100.0,
+        "min_similarity": 100.0,
+        "detection_rate": 100.0
+      },
+      {
+        "transform": "加噪",
+        "trials": 30,
+        "mean_similarity": 100.0,
+        "min_similarity": 100.0,
+        "detection_rate": 100.0
+      },
+      {
+        "transform": "抽样",
+        "trials": 30,
+        "mean_similarity": 100.0,
+        "min_similarity": 100.0,
+        "detection_rate": 100.0
+      },
+      {
+        "transform": "列重排",
+        "trials": 30,
+        "mean_similarity": 100.0,
+        "min_similarity": 100.0,
+        "detection_rate": 100.0
+      },
+      {
+        "transform": "字段拼接",
+        "trials": 30,
+        "mean_similarity": 100.0,
+        "min_similarity": 100.0,
+        "detection_rate": 100.0
+      },
+      {
+        "transform": "行乱序",
+        "trials": 30,
+        "mean_similarity": 100.0,
+        "min_similarity": 100.0,
+        "detection_rate": 100.0
+      }
+    ],
+    "noise_curve": [
+      {
+        "sigma_ratio": 0.05,
+        "sigma": 0.0005,
+        "mean_similarity": 100.0,
+        "detection_rate": 100.0
+      },
+      {
+        "sigma_ratio": 0.1,
+        "sigma": 0.001,
+        "mean_similarity": 100.0,
+        "detection_rate": 100.0
+      },
+      {
+        "sigma_ratio": 0.2,
+        "sigma": 0.002,
+        "mean_similarity": 100.0,
+        "detection_rate": 100.0
+      },
+      {
+        "sigma_ratio": 0.25,
+        "sigma": 0.0025,
+        "mean_similarity": 100.0,
+        "detection_rate": 100.0
+      },
+      {
+        "sigma_ratio": 0.3,
+        "sigma": 0.003,
+        "mean_similarity": 100.0,
+        "detection_rate": 100.0
+      },
+      {
+        "sigma_ratio": 0.4,
+        "sigma": 0.004,
+        "mean_similarity": 100.0,
+        "detection_rate": 100.0
+      },
+      {
+        "sigma_ratio": 0.5,
+        "sigma": 0.005,
+        "mean_similarity": 99.17,
+        "detection_rate": 100.0
+      },
+      {
+        "sigma_ratio": 0.75,
+        "sigma": 0.0075,
+        "mean_similarity": 72.5,
+        "detection_rate": 6.7
+      },
+      {
+        "sigma_ratio": 1.0,
+        "sigma": 0.01,
+        "mean_similarity": 60.42,
+        "detection_rate": 0.0
+      }
+    ],
+    "fpr_trials": 200,
+    "false_positive": 0,
+    "fpr": 0.0,
+    "renumber_similarity": 68.8,
+    "max_value_distortion": 0.01,
+    "mean_value_distortion": 0.005301
+  },
+  "privacy": {
+    "key_bits": 1024,
+    "he": [
+      {
+        "parties": 3,
+        "encrypt_ms": 29.436,
+        "add_ms": 0.0313,
+        "decrypt_ms": 28.386,
+        "ct_chars": 615,
+        "error": 0
+      },
+      {
+        "parties": 10,
+        "encrypt_ms": 28.068,
+        "add_ms": 0.024,
+        "decrypt_ms": 31.523,
+        "ct_chars": 616,
+        "error": 0
+      },
+      {
+        "parties": 30,
+        "encrypt_ms": 28.25,
+        "add_ms": 0.0284,
+        "decrypt_ms": 33.325,
+        "ct_chars": 615,
+        "error": 0
+      }
+    ],
+    "dp": {
+      "bound": 150000.0,
+      "n": 36,
+      "curve": [
+        {
+          "epsilon": 0.1,
+          "sensitivity": 4166.7,
+          "mean_rel_err_pct": 3.704,
+          "p95_rel_err_pct": 11.357
+        },
+        {
+          "epsilon": 0.2,
+          "sensitivity": 4166.7,
+          "mean_rel_err_pct": 1.973,
+          "p95_rel_err_pct": 5.987
+        },
+        {
+          "epsilon": 0.5,
+          "sensitivity": 4166.7,
+          "mean_rel_err_pct": 0.761,
+          "p95_rel_err_pct": 2.323
+        },
+        {
+          "epsilon": 1.0,
+          "sensitivity": 4166.7,
+          "mean_rel_err_pct": 0.381,
+          "p95_rel_err_pct": 1.133
+        },
+        {
+          "epsilon": 2.0,
+          "sensitivity": 4166.7,
+          "mean_rel_err_pct": 0.192,
+          "p95_rel_err_pct": 0.577
+        },
+        {
+          "epsilon": 5.0,
+          "sensitivity": 4166.7,
+          "mean_rel_err_pct": 0.077,
+          "p95_rel_err_pct": 0.231
+        }
+      ]
+    }
+  },
+  "consensus": {
+    "validators": 4,
+    "quorum": 3,
+    "blocks_with_1_down": 5,
+    "success_with_1_down": 5,
+    "halt_with_2_down": true,
+    "synced_blocks_on_recover": 5,
+    "tamper_detected_tx": true,
+    "tamper_detected_state_root": true,
+    "tamper_detected_missing_sig": true,
+    "replay_ok": true,
+    "replay_blocks": 8,
+    "replay_txs": 15,
+    "merkle_proof_valid": true,
+    "block_sigs": 4
+  },
+  "charts": [
+    "C:\\workspace\\competition\\shuyuanlian\\results\\charts\\chart_fingerprint.png",
+    "C:\\workspace\\competition\\shuyuanlian\\results\\charts\\chart_perf.png",
+    "C:\\workspace\\competition\\shuyuanlian\\results\\charts\\chart_dp.png",
+    "C:\\workspace\\competition\\shuyuanlian\\results\\charts\\chart_he.png"
+  ]
+}
